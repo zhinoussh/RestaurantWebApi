@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\MealCategoryController.cs" />
     <Compile Include="DataAccessLayer\IServiceLayer.cs" />
     <Compile Include="DataAccessLayer\Repositories\IRepository.cs" />

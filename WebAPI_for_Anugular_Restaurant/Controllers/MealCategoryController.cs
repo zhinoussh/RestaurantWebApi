@@ -14,23 +14,22 @@ using WebAPI_for_Anugular_Restaurant.Models;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
-    public class MealCategoryController : ApiController
+    public class MealCategoryController : BaseController
     {
-        private IServiceLayer _dataService;
 
-        public MealCategoryController()
+        public MealCategoryController():base(new ServiceLayer())
         {
-            _dataService = new ServiceLayer();
         }
+        
         public IHttpActionResult Get()
         {
-            var categories = _dataService.MealCategory.Get();
+            var categories = DataService.MealCategory.Get();
             return Ok(categories);
         }
 
         public IHttpActionResult Get(int id)
         {
-            var category = _dataService.MealCategory.Get(id);
+            var category = DataService.MealCategory.Get(id);
             if (category == null)
             {
                 return NotFound();
@@ -43,7 +42,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
         public IHttpActionResult Put(tbl_Meals_Category meal)
         {
 
-           var updated_meal= _dataService.MealCategory.Update(meal);
+           var updated_meal= DataService.MealCategory.Update(meal);
            return Ok(updated_meal);
         }
 
@@ -51,20 +50,20 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
         public IHttpActionResult Post(tbl_Meals_Category cat)
         {
 
-          var created_cat= _dataService.MealCategory.Insert(cat);
+          var created_cat= DataService.MealCategory.Insert(cat);
             
           return Created("", created_cat);
         }
 
         public IHttpActionResult Delete(int id)
         {
-            tbl_Meals_Category meal = _dataService.MealCategory.Get(id);
+            tbl_Meals_Category meal = DataService.MealCategory.Get(id);
             if (meal == null)
             {
                 return NotFound();
             }
 
-            _dataService.MealCategory.Delete(meal);
+            DataService.MealCategory.Delete(meal);
             
             return Ok();
         }
