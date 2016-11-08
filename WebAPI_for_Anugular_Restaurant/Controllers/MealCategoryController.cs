@@ -40,43 +40,12 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
             return Ok(category);
         }
 
-        public IHttpActionResult Put(int id, tbl_Meals_Category updated_meal)
+        [ModelValidator]
+        public IHttpActionResult Put(tbl_Meals_Category meal)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            if (id != updated_meal.pkey)
-            {
-                return BadRequest();
-            }
-
-           // db.Entry(updated_meal).State = EntityState.Modified;
-
-            try
-            {
-                tbl_Meals_Category original_meal=db.tbl_Meal_Category.Find(id);
-                if (original_meal != null)
-                {
-                    original_meal.meal_name = updated_meal.meal_name;
-                    db.SaveChanges();
-                    return Ok();
-                }
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                //if (!tbl_Meals_CategoryExists(id))
-                //{
-                //    return NotFound();
-                //}
-                //else
-                //{
-                //    throw;
-                //}
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+           var updated_meal= _dataService.MealCategory.Update(meal);
+           return Ok(updated_meal);
         }
 
         [ModelValidator]
