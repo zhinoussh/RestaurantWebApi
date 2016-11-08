@@ -178,6 +178,10 @@
     <Compile Include="DataAccessLayer\RestaurantDBContext.cs" />
     <Compile Include="DataAccessLayer\ServiceLayer.cs" />
     <Compile Include="Filters\ModelValidatorAttribute.cs" />
+    <Compile Include="Migrations\201611081807050_add-required_attr.cs" />
+    <Compile Include="Migrations\201611081807050_add-required_attr.Designer.cs">
+      <DependentUpon>201611081807050_add-required_attr.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\tbl_Meals_Category.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -239,6 +243,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611081807050_add-required_attr.resx">
+      <DependentUpon>201611081807050_add-required_attr.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

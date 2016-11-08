@@ -16,7 +16,6 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
     public class MealCategoryController : ApiController
     {
-        private RestaurantDBContext db=new RestaurantDBContext();
         private IServiceLayer _dataService;
 
         public MealCategoryController()
@@ -59,16 +58,15 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            tbl_Meals_Category tbl_Meals_Category = db.tbl_Meal_Category.Find(id);
-            if (tbl_Meals_Category == null)
+            tbl_Meals_Category meal = _dataService.MealCategory.Get(id);
+            if (meal == null)
             {
                 return NotFound();
             }
 
-            db.tbl_Meal_Category.Remove(tbl_Meals_Category);
-            db.SaveChanges();
-
-            return Ok(tbl_Meals_Category);
+            _dataService.MealCategory.Delete(meal);
+            
+            return Ok();
         }
 
     }
