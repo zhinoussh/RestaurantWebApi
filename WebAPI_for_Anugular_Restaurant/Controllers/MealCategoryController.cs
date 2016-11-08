@@ -8,35 +8,38 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using WebAPI_for_Anugular_Restaurant.DataAccessLayer;
+using WebAPI_for_Anugular_Restaurant.Filters;
 using WebAPI_for_Anugular_Restaurant.Models;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
     public class MealCategoryController : ApiController
     {
-        private RestaurantDBContext db = new RestaurantDBContext();
+        private RestaurantDBContext db=new RestaurantDBContext();
+        private IServiceLayer _dataService;
 
-        // GET: api/tbl_Meals_Category
-        public IQueryable<tbl_Meals_Category> Get()
+        public MealCategoryController()
         {
-            return db.tbl_Meal_Category;
+            _dataService = new ServiceLayer();
+        }
+        public IHttpActionResult Get()
+        {
+            var categories = _dataService.MealCategory.Get();
+            return Ok(categories);
         }
 
-        // GET: api/tbl_Meals_Category/5
-        [ResponseType(typeof(tbl_Meals_Category))]
         public IHttpActionResult Get(int id)
         {
-            tbl_Meals_Category meal = db.tbl_Meal_Category.Find(id);
-            if (meal == null)
+            var category = _dataService.MealCategory.Get(id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return Ok(meal);
+            return Ok(category);
         }
 
-        // PUT: api/tbl_Meals_Category/5
-        [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, tbl_Meals_Category updated_meal)
         {
             if (!ModelState.IsValid)
@@ -63,36 +66,28 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!tbl_Meals_CategoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                //if (!tbl_Meals_CategoryExists(id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
             }
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/tbl_Meals_Category
-        [ResponseType(typeof(tbl_Meals_Category))]
-        public IHttpActionResult Post(tbl_Meals_Category meal)
+        [ModelValidator]
+        public IHttpActionResult Post(tbl_Meals_Category cat)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            db.tbl_Meal_Category.Add(meal);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = meal.pkey }, meal);
+          var created_cat= _dataService.MealCategory.Insert(cat);
+            
+          return Created("", created_cat);
         }
 
-        // DELETE: api/tbl_Meals_Category/5
-        [ResponseType(typeof(tbl_Meals_Category))]
         public IHttpActionResult Delete(int id)
         {
             tbl_Meals_Category tbl_Meals_Category = db.tbl_Meal_Category.Find(id);
@@ -107,18 +102,5 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
             return Ok(tbl_Meals_Category);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool tbl_Meals_CategoryExists(int id)
-        {
-            return db.tbl_Meal_Category.Count(e => e.pkey == id) > 0;
-        }
     }
 }
