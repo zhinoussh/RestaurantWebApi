@@ -17,7 +17,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
     public class MealCategoryController : BaseController
     {
 
-        public MealCategoryController():base(new ServiceLayer())
+        public MealCategoryController(IServiceLayer serviceLayer):base(serviceLayer)
         {
         }
         
