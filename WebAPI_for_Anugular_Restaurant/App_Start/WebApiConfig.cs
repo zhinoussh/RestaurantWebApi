@@ -16,6 +16,7 @@ namespace WebAPI_for_Anugular_Restaurant
         public static void Register(HttpConfiguration config)
         {
 
+            //for using unity and dependency injection
             var container = new UnityContainer();
             container.RegisterType<IServiceLayer, ServiceLayer>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);

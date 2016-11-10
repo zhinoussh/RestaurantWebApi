@@ -14,6 +14,7 @@ using WebAPI_for_Anugular_Restaurant.Models;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
+    [Authorize]
     public class MealCategoryController : BaseController
     {
 

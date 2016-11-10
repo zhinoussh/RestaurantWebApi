@@ -40,9 +40,15 @@ namespace WebAPI_for_Anugular_Restaurant.Providers
             }
 
             ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(userManager,
-               OAuthDefaults.AuthenticationType);
+               OAuthDefaults.AuthenticationType);            
+ 
             ClaimsIdentity cookiesIdentity = await user.GenerateUserIdentityAsync(userManager,
                 CookieAuthenticationDefaults.AuthenticationType);
+
+
+            //adding claims in tutorial
+            //oAuthIdentity.AddClaim(new Claim("sub", context.UserName));
+            //oAuthIdentity.AddClaim(new Claim("role", "user"));
 
             AuthenticationProperties properties = CreateProperties(user.UserName);
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
