@@ -11,10 +11,10 @@ namespace WebAPI_for_Anugular_Restaurant.Models
     public class tbl_Meals_Category
     {
         [Key]
-        public int pkey { get; set; }
+        public int CategoryID { get; set; }
 
         [Required]
-        public string meal_name { get; set; }
+        public string CategoryName { get; set; }
 
        
     }
