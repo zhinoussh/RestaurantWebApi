@@ -14,7 +14,7 @@ using WebAPI_for_Anugular_Restaurant.Models;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class MealCategoryController : BaseController
     {
 
@@ -42,7 +42,6 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
         [ModelValidator]
         public IHttpActionResult Put(tbl_Meals_Category meal)
         {
-
            var updated_meal= DataService.MealCategory.Update(meal);
            return Ok(updated_meal);
         }
