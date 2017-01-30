@@ -301,3 +301,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+WebAPI_for_Anugular_Restaurant/Upload/*
