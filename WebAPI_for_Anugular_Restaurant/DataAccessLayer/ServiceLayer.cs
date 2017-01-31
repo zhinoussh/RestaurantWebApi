@@ -28,5 +28,10 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
                 return _mealCategory;
             }
         }
+
+        public void test()
+        {
+           // _context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('tbl_Meals_Category', RESEED, 0)");
+        }
     }
 }

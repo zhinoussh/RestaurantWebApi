@@ -198,10 +198,6 @@
     <Compile Include="DataAccessLayer\ServiceLayer.cs" />
     <Compile Include="Filters\ModelValidatorAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
-    <Compile Include="Migrations\201701301141279_delete_col_mealName.cs" />
-    <Compile Include="Migrations\201701301141279_delete_col_mealName.Designer.cs">
-      <DependentUpon>201701301141279_delete_col_mealName.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\tbl_Meals_Category.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -263,11 +259,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701301141279_delete_col_mealName.resx">
-      <DependentUpon>201701301141279_delete_col_mealName.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
