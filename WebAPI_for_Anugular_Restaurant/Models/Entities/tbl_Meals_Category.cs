@@ -10,12 +10,17 @@ namespace WebAPI_for_Anugular_Restaurant.Models
 
     public class tbl_Meals_Category
     {
+        public tbl_Meals_Category()
+        {
+            SubCategory = new HashSet<tbl_Sub_Category>();
+        }
         [Key]
         public int CategoryID { get; set; }
 
         [Required]
         public string CategoryName { get; set; }
 
+        public virtual ICollection<tbl_Sub_Category> SubCategory { get; set; }
        
     }
 }

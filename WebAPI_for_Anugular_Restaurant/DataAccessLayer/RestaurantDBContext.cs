@@ -10,6 +10,7 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
     public class RestaurantDBContext:DbContext
     {
         public virtual DbSet<tbl_Meals_Category> tbl_Meal_Category { get; set; }
+        public virtual DbSet<tbl_Sub_Category> tbl_Sub_Category { get; set; }
 
 
         public RestaurantDBContext()
@@ -19,6 +20,13 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<tbl_Meals_Category>()
+                .HasMany(e => e.SubCategory)
+                .WithOptional(e => e.Category)
+                .HasForeignKey(e => e.CategoryID)
+                .WillCascadeOnDelete();
+                
         }
     }
 }
