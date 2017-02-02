@@ -190,9 +190,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="DataAccessLayer\IServiceLayer.cs" />
     <Compile Include="DataAccessLayer\Repositories\IRepository.cs" />
     <Compile Include="DataAccessLayer\Repositories\CategoryRepository.cs" />
+    <Compile Include="DataAccessLayer\Repositories\MenuRepository.cs" />
     <Compile Include="DataAccessLayer\Repositories\Repository.cs" />
     <Compile Include="DataAccessLayer\RestaurantDBContext.cs" />
     <Compile Include="DataAccessLayer\ServiceLayer.cs" />

@@ -54,6 +54,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
           return Created("", created_cat);
         }
 
+        [ModelValidator]
         public IHttpActionResult Delete(int id)
         {
             tbl_Meals_Category meal = DataService.CategoryList.Get(id);

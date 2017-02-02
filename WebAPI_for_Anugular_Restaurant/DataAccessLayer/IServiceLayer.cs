@@ -12,6 +12,8 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
     {
         Repository<tbl_Meals_Category> CategoryList { get; }
 
+        Repository<tbl_Sub_Category> MenuList { get; }
+
         void test();
     }
 }

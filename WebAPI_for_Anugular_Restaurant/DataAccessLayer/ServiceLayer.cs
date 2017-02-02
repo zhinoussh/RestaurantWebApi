@@ -10,6 +10,8 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
     public class ServiceLayer:IServiceLayer
     {
         private Repository<tbl_Meals_Category> _CategoryList;
+        private Repository<tbl_Sub_Category> _MenuList;
+
 
         private RestaurantDBContext _context;
 
@@ -29,9 +31,22 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
             }
         }
 
+        public Repository<tbl_Sub_Category> MenuList
+        {
+            get {
+                if (_MenuList == null)
+                    _MenuList = new MenuRepository(_context);
+
+                return _MenuList;
+            }
+        }
         public void test()
         {
            // _context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('tbl_Meals_Category', RESEED, 0)");
         }
+
+
+      
+
     }
 }
