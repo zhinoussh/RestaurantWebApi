@@ -18,13 +18,13 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
 
         }
 
-        public IHttpActionResult Get()
+        public IHttpActionResult GetMenuInCategory(int id)
         {
-          List<tbl_Sub_Category> menuList=DataService.MenuList.Get();
+            List<tbl_Sub_Category> menuList = DataService.MenuList.Get_Menu_In_Category(id);
           return Ok(menuList);
         }
 
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetMenuItem(int id)
         {
             tbl_Sub_Category menuItem = DataService.MenuList.Get(id);
             if (menuItem == null)

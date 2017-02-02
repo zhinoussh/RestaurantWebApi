@@ -10,9 +10,9 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
 {
     public interface IServiceLayer
     {
-        Repository<tbl_Meals_Category> CategoryList { get; }
+        CategoryRepository CategoryList { get; }
 
-        Repository<tbl_Sub_Category> MenuList { get; }
+        MenuRepository MenuList { get; }
 
         void test();
     }

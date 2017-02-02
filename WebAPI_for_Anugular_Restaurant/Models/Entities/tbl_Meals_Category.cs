@@ -20,7 +20,7 @@ namespace WebAPI_for_Anugular_Restaurant.Models
         [Required]
         public string CategoryName { get; set; }
 
-        public virtual ICollection<tbl_Sub_Category> SubCategory { get; set; }
+        public ICollection<tbl_Sub_Category> SubCategory { get; set; }
        
     }
 }

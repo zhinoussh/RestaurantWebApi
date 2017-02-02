@@ -17,7 +17,7 @@ namespace WebAPI_for_Anugular_Restaurant.Models
         public String Description { get; set; }
 
         [ForeignKey("CategoryID")]
-        public virtual tbl_Meals_Category Category { get; set; }
+        public tbl_Meals_Category Category { get; set; }
 
 
     }
