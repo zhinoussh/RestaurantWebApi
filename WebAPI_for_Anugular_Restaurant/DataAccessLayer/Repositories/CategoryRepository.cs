@@ -6,9 +6,9 @@ using WebAPI_for_Anugular_Restaurant.Models;
 
 namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer.Repositories
 {
-    public class MealCategoryRepository: Repository<tbl_Meals_Category>
+    public class CategoryRepository: Repository<tbl_Meals_Category>
     {
-        public MealCategoryRepository(RestaurantDBContext context)
+        public CategoryRepository(RestaurantDBContext context)
             : base(context)
         {
 

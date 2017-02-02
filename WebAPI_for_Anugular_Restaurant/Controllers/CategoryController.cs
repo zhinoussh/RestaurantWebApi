@@ -14,22 +14,22 @@ using WebAPI_for_Anugular_Restaurant.Models;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
-    public class MealCategoryController : BaseController
+    public class CategoryController : BaseController
     {
 
-        public MealCategoryController(IServiceLayer serviceLayer):base(serviceLayer)
+        public CategoryController(IServiceLayer serviceLayer):base(serviceLayer)
         {
         }
         
         public IHttpActionResult Get()
         {
-            var categories = DataService.MealCategory.Get();
+            var categories = DataService.CategoryList.Get();
             return Ok(categories);
         }
 
         public IHttpActionResult Get(int id)
         {
-            var category = DataService.MealCategory.Get(id);
+            var category = DataService.CategoryList.Get(id);
             if (category == null)
             {
                 return NotFound();
@@ -41,7 +41,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
         [ModelValidator]
         public IHttpActionResult Put(tbl_Meals_Category meal)
         {
-           var updated_meal= DataService.MealCategory.Update(meal);
+            var updated_meal = DataService.CategoryList.Update(meal);
            return Ok(updated_meal);
         }
 
@@ -49,20 +49,20 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
         public IHttpActionResult Post(tbl_Meals_Category cat)
         {
 
-          var created_cat= DataService.MealCategory.Insert(cat);
+            var created_cat = DataService.CategoryList.Insert(cat);
             
           return Created("", created_cat);
         }
 
         public IHttpActionResult Delete(int id)
         {
-            tbl_Meals_Category meal = DataService.MealCategory.Get(id);
+            tbl_Meals_Category meal = DataService.CategoryList.Get(id);
             if (meal == null)
             {
                 return NotFound();
             }
 
-            DataService.MealCategory.Delete(meal);
+            DataService.CategoryList.Delete(meal);
             
             return Ok();
         }

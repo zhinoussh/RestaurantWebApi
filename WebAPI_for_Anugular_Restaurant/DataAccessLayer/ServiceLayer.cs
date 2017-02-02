@@ -9,7 +9,7 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
 {
     public class ServiceLayer:IServiceLayer
     {
-        private Repository<tbl_Meals_Category> _mealCategory;
+        private Repository<tbl_Meals_Category> _CategoryList;
 
         private RestaurantDBContext _context;
 
@@ -18,14 +18,14 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
             _context = new RestaurantDBContext();
         }
 	
-        public Repository<tbl_Meals_Category> MealCategory
+        public Repository<tbl_Meals_Category> CategoryList
         {
             get
             {
-                if (_mealCategory == null)
-                    _mealCategory = new MealCategoryRepository(_context);
+                if (_CategoryList == null)
+                    _CategoryList = new CategoryRepository(_context);
 
-                return _mealCategory;
+                return _CategoryList;
             }
         }
 
