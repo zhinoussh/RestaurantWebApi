@@ -7,13 +7,13 @@ namespace WebAPI_for_Anugular_Restaurant.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class add_tbl_SubCategory : IMigrationMetadata
+    public sealed partial class addFirstNameLastName : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(add_tbl_SubCategory));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addFirstNameLastName));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702011658375_add_tbl_SubCategory"; }
+            get { return "201702131025285_addFirstNameLastName"; }
         }
         
         string IMigrationMetadata.Source

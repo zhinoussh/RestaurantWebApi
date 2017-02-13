@@ -47,10 +47,11 @@ namespace WebAPI_for_Anugular_Restaurant.Providers
 
 
             //adding claims in tutorial
-            //oAuthIdentity.AddClaim(new Claim("sub", context.UserName));
-            //oAuthIdentity.AddClaim(new Claim("role", "user"));
+            //oAuthIdentity.AddClaim(new Claim("FirstName", "user"));
 
             AuthenticationProperties properties = CreateProperties(user.UserName);
+            properties.Dictionary.Add("firstName",user.FirstName);
+
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);

@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using WebAPI_for_Anugular_Restaurant.Models;
 using WebAPI_for_Anugular_Restaurant.Providers;
 using WebAPI_for_Anugular_Restaurant.Results;
+using Newtonsoft.Json.Linq;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
@@ -328,16 +329,40 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email 
+                ,FirstName=model.FirstName,LastName=model.LastName};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
+          
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
 
-            return Ok();
+           //login
+            ClaimsIdentity oAuthIdentity = new ClaimsIdentity(Startup.OAuthOptions.AuthenticationType);
+
+            AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, new AuthenticationProperties());
+
+            DateTime currentUtc = DateTime.UtcNow;
+            ticket.Properties.IssuedUtc = currentUtc;
+            ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromDays(365));
+
+            string accessToken = Startup.OAuthOptions.AccessTokenFormat.Protect(ticket);
+            Request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            // Create the response building a JSON object that mimics exactly the one issued by the default /Token endpoint
+            JObject token = new JObject(
+                new JProperty("userName", user.UserName),
+                new JProperty("firstName", user.FirstName),
+                new JProperty("access_token", accessToken),
+                new JProperty("token_type", "bearer"),
+                new JProperty("expires_in", TimeSpan.FromDays(365).TotalSeconds.ToString()),
+                new JProperty("issued", currentUtc.ToString("ddd, dd MMM yyyy HH':'mm':'ss 'GMT'")),
+                new JProperty("expires", currentUtc.Add(TimeSpan.FromDays(365)).ToString("ddd, dd MMM yyyy HH:mm:ss 'GMT'"))
+            );
+
+            return Ok(token);
         }
 
         // POST api/Account/RegisterExternal

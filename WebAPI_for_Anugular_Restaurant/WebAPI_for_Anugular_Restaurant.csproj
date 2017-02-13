@@ -200,9 +200,9 @@
     <Compile Include="DataAccessLayer\ServiceLayer.cs" />
     <Compile Include="Filters\ModelValidatorAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
-    <Compile Include="Migrations\201702011658375_add_tbl_SubCategory.cs" />
-    <Compile Include="Migrations\201702011658375_add_tbl_SubCategory.Designer.cs">
-      <DependentUpon>201702011658375_add_tbl_SubCategory.cs</DependentUpon>
+    <Compile Include="Migrations\201702131025285_addFirstNameLastName.cs" />
+    <Compile Include="Migrations\201702131025285_addFirstNameLastName.Designer.cs">
+      <DependentUpon>201702131025285_addFirstNameLastName.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\tbl_Meals_Category.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -268,8 +268,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702011658375_add_tbl_SubCategory.resx">
-      <DependentUpon>201702011658375_add_tbl_SubCategory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702131025285_addFirstNameLastName.resx">
+      <DependentUpon>201702131025285_addFirstNameLastName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
