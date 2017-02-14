@@ -339,7 +339,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
                 return GetErrorResult(result);
             }
 
-           //login
+           //auto login after registeration
             ClaimsIdentity oAuthIdentity = new ClaimsIdentity(Startup.OAuthOptions.AuthenticationType);
 
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, new AuthenticationProperties());
@@ -357,7 +357,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
                 new JProperty("firstName", user.FirstName),
                 new JProperty("access_token", accessToken),
                 new JProperty("token_type", "bearer"),
-                new JProperty("expires_in", TimeSpan.FromDays(365).TotalSeconds.ToString()),
+                new JProperty("expires_in", TimeSpan.FromDays(10).TotalSeconds.ToString()),
                 new JProperty("issued", currentUtc.ToString("ddd, dd MMM yyyy HH':'mm':'ss 'GMT'")),
                 new JProperty("expires", currentUtc.Add(TimeSpan.FromDays(365)).ToString("ddd, dd MMM yyyy HH:mm:ss 'GMT'"))
             );
