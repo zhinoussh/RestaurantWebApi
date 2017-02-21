@@ -357,7 +357,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
                 new JProperty("firstName", user.FirstName),
                 new JProperty("access_token", accessToken),
                 new JProperty("token_type", "bearer"),
-                new JProperty("expires_in", TimeSpan.FromDays(10).TotalSeconds.ToString()),
+                new JProperty("expires_in", TimeSpan.FromMinutes(10).TotalSeconds.ToString()),
                 new JProperty("issued", currentUtc.ToString("ddd, dd MMM yyyy HH':'mm':'ss 'GMT'")),
                 new JProperty("expires", currentUtc.Add(TimeSpan.FromDays(365)).ToString("ddd, dd MMM yyyy HH:mm:ss 'GMT'"))
             );
