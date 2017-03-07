@@ -200,9 +200,9 @@
     <Compile Include="DataAccessLayer\ServiceLayer.cs" />
     <Compile Include="Filters\ModelValidatorAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
-    <Compile Include="Migrations\201702131025285_addFirstNameLastName.cs" />
-    <Compile Include="Migrations\201702131025285_addFirstNameLastName.Designer.cs">
-      <DependentUpon>201702131025285_addFirstNameLastName.cs</DependentUpon>
+    <Compile Include="Migrations\201703071233312_add_profile_relation.cs" />
+    <Compile Include="Migrations\201703071233312_add_profile_relation.Designer.cs">
+      <DependentUpon>201703071233312_add_profile_relation.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\tbl_Meals_Category.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -216,6 +216,7 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\tbl_Sub_Category.cs" />
+    <Compile Include="Models\Entities\tbl_user_profile.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -268,8 +269,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702131025285_addFirstNameLastName.resx">
-      <DependentUpon>201702131025285_addFirstNameLastName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703071233312_add_profile_relation.resx">
+      <DependentUpon>201703071233312_add_profile_relation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
