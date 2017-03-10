@@ -51,6 +51,7 @@ namespace WebAPI_for_Anugular_Restaurant.Providers
 
             AuthenticationProperties properties = CreateProperties(user.UserName);
             properties.Dictionary.Add("firstName",user.FirstName);
+            properties.Dictionary.Add("lastName", user.LastName);
 
             AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
