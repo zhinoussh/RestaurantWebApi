@@ -32,6 +32,9 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
             String userID = getUserId(username);
             tbl_user_profile profile = DataService.ProfileManager.Get_User_Profile(userID);
 
+            if (profile == null)
+                return NotFound();
+
             ProfileViewModel vm = new ProfileViewModel();
             vm.PhoneNumber = profile.PhoneNumber;
             vm.Address = profile.Address;
@@ -42,8 +45,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
                 vm.FirstName = user.FirstName;
                 vm.LastName = user.LastName;
             }
-            if(profile==null)
-                return NotFound();
+            
 
             return Ok(vm);
         }
