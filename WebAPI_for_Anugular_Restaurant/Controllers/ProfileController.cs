@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ProfileController : BaseController
     {
         public ProfileController(IServiceLayer serviceLayer)
