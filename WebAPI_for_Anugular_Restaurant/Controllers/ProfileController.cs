@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProfileController : BaseController
     {
         public ProfileController(IServiceLayer serviceLayer)
@@ -29,36 +29,28 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
 
         public IHttpActionResult Get(string username)
         {
-            String userID = getUserId(username);
-            tbl_user_profile profile = DataService.ProfileManager.Get_User_Profile(userID);
+            ProfileViewModel profile = DataService.ProfileManager.Get_User_Profile(username,this);
 
             if (profile == null)
                 return NotFound();
 
-            ProfileViewModel vm = new ProfileViewModel();
-            vm.PhoneNumber = profile.PhoneNumber;
-            vm.Address = profile.Address;
+            return Ok(profile);
+        }
 
-            using (var db = new ApplicationDbContext())
+        public IHttpActionResult Post(ProfileViewModel profile, string username)
+        {
+            if (Get(username) == NotFound())
             {
-                var user = db.Users.First(c => c.Id == userID);
-                vm.FirstName = user.FirstName;
-                vm.LastName = user.LastName;
+                tbl_user_profile user_profile = DataService.ProfileManager.Insert(profile, username, this);
+                return Created("", user_profile);
             }
-            
-
-            return Ok(vm);
+            else
+                return Put(profile, username);
         }
 
-        public IHttpActionResult Post(tbl_user_profile profile)
+        public IHttpActionResult Put(ProfileViewModel profile, string username)
         {
-            DataService.ProfileManager.Insert(profile);
-            return Created("", profile);
-        }
-
-        public IHttpActionResult Put(tbl_user_profile profile)
-        {
-            DataService.ProfileManager.Update(profile);
+            DataService.ProfileManager.Update(profile, username, this);
             return Ok(profile);
         }
 

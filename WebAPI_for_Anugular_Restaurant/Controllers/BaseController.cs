@@ -25,14 +25,6 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
             }
         }
 
-        protected string getUserId(string username)
-        {
-            ApplicationUserManager UserManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            ApplicationUser user = UserManager.FindByName(username);
-            String userId = user.Id;
-
-            return userId;
-        }
 
     }
 }
