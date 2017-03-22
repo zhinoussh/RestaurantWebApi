@@ -191,19 +191,17 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="DataAccessLayer\IServiceLayer.cs" />
     <Compile Include="DataAccessLayer\Repositories\IRepository.cs" />
     <Compile Include="DataAccessLayer\Repositories\CategoryRepository.cs" />
     <Compile Include="DataAccessLayer\Repositories\MenuRepository.cs" />
+    <Compile Include="DataAccessLayer\Repositories\ProfileRepository.cs" />
     <Compile Include="DataAccessLayer\Repositories\Repository.cs" />
     <Compile Include="DataAccessLayer\RestaurantDBContext.cs" />
     <Compile Include="DataAccessLayer\ServiceLayer.cs" />
     <Compile Include="Filters\ModelValidatorAttribute.cs" />
     <Compile Include="Filters\RequireHttpsAttribute.cs" />
-    <Compile Include="Migrations\201702131025285_addFirstNameLastName.cs" />
-    <Compile Include="Migrations\201702131025285_addFirstNameLastName.Designer.cs">
-      <DependentUpon>201702131025285_addFirstNameLastName.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Entities\tbl_Meals_Category.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -214,9 +212,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Configuration_Account.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Entities\tbl_Sub_Category.cs" />
+    <Compile Include="Models\Entities\tbl_user_profile.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ViewModels\ProfileViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -266,11 +266,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702131025285_addFirstNameLastName.resx">
-      <DependentUpon>201702131025285_addFirstNameLastName.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

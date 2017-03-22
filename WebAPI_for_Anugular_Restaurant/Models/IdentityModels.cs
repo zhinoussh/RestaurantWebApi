@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebAPI_for_Anugular_Restaurant.Models
 {
@@ -23,6 +25,7 @@ namespace WebAPI_for_Anugular_Restaurant.Models
 
             return userIdentity;
         }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -31,7 +34,12 @@ namespace WebAPI_for_Anugular_Restaurant.Models
             : base("RestaurantConnection", throwIfV1Schema: false)
         {
         }
-        
+
+
+        protected override void OnModelCreating(System.Data.Entity.DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        } 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

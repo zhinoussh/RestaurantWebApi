@@ -355,6 +355,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
             JObject token = new JObject(
                 new JProperty("userName", user.UserName),
                 new JProperty("firstName", user.FirstName),
+                new JProperty("lastName", user.LastName),
                 new JProperty("access_token", accessToken),
                 new JProperty("token_type", "bearer"),
                 new JProperty("expires_in", TimeSpan.FromMinutes(5).TotalSeconds.ToString()),

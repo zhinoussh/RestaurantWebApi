@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
+using System.Net.Http;
 using WebAPI_for_Anugular_Restaurant.DataAccessLayer;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using WebAPI_for_Anugular_Restaurant.Models;
 
 namespace WebAPI_for_Anugular_Restaurant.Controllers
 {
@@ -23,5 +24,7 @@ namespace WebAPI_for_Anugular_Restaurant.Controllers
                 return _dataService;
             }
         }
+
+
     }
 }

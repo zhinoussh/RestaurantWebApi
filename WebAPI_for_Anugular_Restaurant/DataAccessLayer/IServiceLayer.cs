@@ -14,6 +14,8 @@ namespace WebAPI_for_Anugular_Restaurant.DataAccessLayer
 
         MenuRepository MenuList { get; }
 
+        ProfileRepository ProfileManager { get; }
+
         void test();
     }
 }
